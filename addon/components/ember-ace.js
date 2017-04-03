@@ -113,7 +113,7 @@ const ACE_HANDLERS = Object.freeze({
   maxLines: 'editor',
   enableBasicAutocompletion: true,
   enableSnippets: true,
-  enableLiveAutocompletion: true
+  enableLiveAutocompletion: true,
 
   tabSize: 'session',
   useSoftTabs: 'session',
