@@ -14,6 +14,9 @@ export default Ember.Component.extend({
   printMarginColumn: 80,
   showInvisibles: false,
   readOnly: false,
+  enableBasicAutocompletion: false,
+  enableSnippets: false,
+  enableLiveAutocompletion: false,
 
   markers: Ember.computed(() => []),
   annotations: Ember.computed(() => []),
@@ -111,9 +114,9 @@ const ACE_HANDLERS = Object.freeze({
   readOnly: 'editor',
   minLines: 'editor',
   maxLines: 'editor',
-  enableBasicAutocompletion: true,
-  enableSnippets: true,
-  enableLiveAutocompletion: true,
+  enableBasicAutocompletion: 'editor',
+  enableSnippets: 'editor',
+  enableLiveAutocompletion: 'editor',
 
   tabSize: 'session',
   useSoftTabs: 'session',
