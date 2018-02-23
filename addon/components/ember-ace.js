@@ -23,18 +23,31 @@ export default Ember.Component.extend({
 
   maxLines: undefined,
   minLines: undefined,
-
+  init(){
+        this._super();
+        LANG_TOOLS.addCompleter(this._customCompletor())
+  },
   lines: Ember.computed({
     set(key, value) {
       this.set('minLines', value);
       this.set('maxLines', value);
     }
   }),
+  suggestAutoCompletions(){},
 
   didInsertElement() {
     this._super();
     this._instantiateEditor();
   },
+  _customCompletor(){
+
+        var this2 = this
+        return {
+            getCompletions: function(editor, session, pos, prefix, callback) {
+                this2.suggestAutoCompletions(editor, session, pos, prefix, this2.get('context'), callback)
+            }
+        }
+    },
 
   willDestroyElement() {
     this._super();
@@ -151,3 +164,4 @@ const ACE_HANDLERS = Object.freeze({
 });
 
 const ACE_PROPERTIES = Object.freeze(Object.keys(ACE_HANDLERS));
+const LANG_TOOLS = ace.require("ace/ext/language_tools")
